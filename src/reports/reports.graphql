@@ -43,6 +43,7 @@ enum Source{
 
 enum State{
   OPEN
+  CLOSED
 }
 
 enum ReportType {
@@ -63,5 +64,5 @@ input CreateReportInput {
 
 input UpdateReportInput {
   id: ID!
-  sourceIdentityId: String!
+  state: State!
 }

@@ -22,7 +22,8 @@ export enum Source {
 }
 
 export enum State {
-    OPEN = "OPEN"
+    OPEN = "OPEN",
+    CLOSED = "CLOSED"
 }
 
 export class CreateReportInput {
@@ -31,7 +32,7 @@ export class CreateReportInput {
 
 export class UpdateReportInput {
     id: string;
-    sourceIdentityId: string;
+    state: State;
 }
 
 export abstract class IMutation {
