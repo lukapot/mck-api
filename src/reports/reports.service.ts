@@ -15,7 +15,7 @@ export class ReportsService {
   }
 
   public async getList(): Promise<Report[]> {
-    const list = this.reportsDatabase;
+    const list = this.reportsDatabase.filter(r => !r.isResolved);
     return list;
   }
 

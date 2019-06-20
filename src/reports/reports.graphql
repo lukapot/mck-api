@@ -21,6 +21,7 @@ type Report {
   state: State
   payload: Payload
   created: String
+  isResolved: Boolean
 }
 
 type Payload {
@@ -65,4 +66,5 @@ input CreateReportInput {
 input UpdateReportInput {
   id: ID!
   state: State!
+  isResolved: Boolean
 }

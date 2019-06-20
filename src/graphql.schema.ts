@@ -33,6 +33,7 @@ export class CreateReportInput {
 export class UpdateReportInput {
     id: string;
     state: State;
+    isResolved?: boolean;
 }
 
 export abstract class IMutation {
@@ -71,6 +72,7 @@ export class Report {
     state?: State;
     payload?: Payload;
     created?: string;
+    isResolved?: boolean;
 }
 
 export abstract class ISubscription {

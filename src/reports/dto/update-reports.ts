@@ -6,4 +6,6 @@ export class UpdateReportDto extends UpdateReportInput {
     id: string;
     @IsNotEmpty()
     state: State;
+    @IsNotEmpty()
+    isResolved: boolean;
 }

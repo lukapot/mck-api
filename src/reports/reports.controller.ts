@@ -13,7 +13,11 @@ export class ReportsController {
     if (!reportId) {
       throw new BadRequestException('reportId is required');
     }
-    const { ticketState } = request.body;
-    return this.reportsService.update({ id: reportId, state: ticketState });
+    const { ticketState, isResolved } = request.body;
+    return this.reportsService.update({
+      id: reportId,
+      state: ticketState,
+      isResolved: !!isResolved,
+    });
   }
 }
