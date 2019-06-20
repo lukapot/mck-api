@@ -1,15 +1,19 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { PubSub } from 'graphql-subscriptions';
 import { Report } from 'graphql.schema';
 import { UpdateReportDto } from './dto/update-reports';
 import { ReportsService } from './reports.service';
 
+const pubSub = new PubSub();
 @Resolver('Reports')
 export class ReportsResolvers {
 
   constructor(
     private readonly reportsService: ReportsService,
     ) {
-
+      this.reportsService.reportChanged.subscribe((report) => {
+        pubSub.publish('reportChanged', { reportChanged: report });
+      });
   }
 
   @Query('report')
@@ -35,4 +39,8 @@ export class ReportsResolvers {
     return this.reportsService.update({ ...args });
   }
 
+  @Subscription('reportChanged')
+  reportChanged(){
+    return pubSub.asyncIterator('reportChanged');
+  }
 }

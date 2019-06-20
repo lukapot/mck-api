@@ -1,10 +1,12 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { Subject } from 'rxjs';
 import * as database from '../../assets/reports.json';
 import { Report } from '../graphql.schema';
 import { UpdateReportDto } from './dto/update-reports';
 
 @Injectable()
 export class ReportsService {
+  public reportChanged: Subject<Report> = new Subject<Report>();
   private reportsDatabase: any = database;
 
   public async findOneById(id: string): Promise<Report> {
@@ -28,6 +30,7 @@ export class ReportsService {
       ...doc,
     };
     const updatedReport = await this.findOneById(doc.id);
+    this.reportChanged.next(updatedReport);
     return updatedReport;
   }
 
