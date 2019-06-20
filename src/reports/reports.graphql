@@ -1,6 +1,6 @@
 type Query {
   report(id: String!): Report
-  getReports(): [Report]
+  getReports: [Report]
 }
 
 type Mutation {
@@ -63,5 +63,5 @@ input CreateReportInput {
 
 input UpdateReportInput {
   id: ID!
-  sourceIdentityId: String
+  sourceIdentityId: String!
 }

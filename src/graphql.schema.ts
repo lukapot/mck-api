@@ -31,7 +31,15 @@ export class CreateReportInput {
 
 export class UpdateReportInput {
     id: string;
-    sourceIdentityId?: string;
+    sourceIdentityId: string;
+}
+
+export abstract class IMutation {
+    abstract createReport(createReportInput?: CreateReportInput): Report | Promise<Report>;
+
+    abstract updateReport(updateReportInput?: UpdateReportInput): Report | Promise<Report>;
+
+    abstract deleteReport(id: string): Report | Promise<Report>;
 }
 
 export class Payload {
@@ -45,6 +53,8 @@ export class Payload {
 
 export abstract class IQuery {
     abstract report(id: string): Report | Promise<Report>;
+
+    abstract getReports(): Report[] | Promise<Report[]>;
 }
 
 export class Reference {
@@ -60,4 +70,8 @@ export class Report {
     state?: State;
     payload?: Payload;
     created?: string;
+}
+
+export abstract class ISubscription {
+    abstract reportChanged(): Report | Promise<Report>;
 }
