@@ -1,0 +1,56 @@
+type Query {
+  report(id: String!): Report
+}
+
+type Report {
+  id: ID!
+  source: Source
+  sourceIdentityId: String
+  reference: Reference
+  state: State
+  payload: Payload
+  created: String
+}
+
+type Payload {
+  source: Source
+  reportType: ReportType
+  message: String
+  reportId: String
+  referenceResourceId: String
+  referenceResourceType: ReferenceResourceType
+}
+
+type Reference {
+  referenceId: String
+  referenceType: Source
+}
+
+enum Source{
+  REPORT
+}
+
+enum State{
+  OPEN
+}
+
+enum ReportType {
+  INFRINGES_PROPERTY
+  SPAM
+  VIOLATES_POLICIES
+}
+
+enum ReferenceResourceType{
+  ARTICLE
+  POST
+  REPLY
+}
+
+input CreateReportInput {
+  name: String! 
+}
+
+input UpdateReportInput {
+  id: ID!
+  sourceIdentityId: String
+}
