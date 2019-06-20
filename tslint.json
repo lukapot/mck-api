@@ -1,0 +1,62 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+      "tslint:recommended"
+  ],
+  "jsRules": {
+      "no-unused-expression": true
+  },
+  "rules": {
+      "eofline": true,
+      "quotemark": [
+          true,
+          "single"
+      ],
+      "indent": [true, "spaces", 2],
+      "member-access": [
+          false
+      ],
+      "ordered-imports": [
+          true
+      ],
+      "max-line-length": [
+          true,
+          150
+      ],
+      "member-ordering": [
+          false
+      ],
+      "curly": true,
+      "interface-name": [
+          false
+      ],
+      "array-type": [
+          false
+      ],
+      "no-empty-interface": false,
+      "no-empty": true,
+      "arrow-parens": false,
+      "object-literal-sort-keys": false,
+      "no-unused-expression": false,
+      "max-classes-per-file": [
+          false,
+          1
+      ],
+      "variable-name": [
+          false
+      ],
+      "one-line": [
+          false
+      ],
+      "one-variable-per-declaration": [
+          false
+      ]
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "/**/*.json",
+      "/**/graphql.schema.ts"
+    ]
+  }
+}
